@@ -30,8 +30,8 @@ public class Main {
             Library library= new Library(books,readers);
 
             //Part-1: Equals
-            Book book2=new Book("The Metamorphosis", "Franz Kafka", "Novella");
-            System.out.println("book.equals(): "+books.get(4).equals(book2));
+            Book conceteBook=new Book("The Metamorphosis", "Franz Kafka", "Novella");
+            System.out.println("book.equals(): "+books.get(4).equals(conceteBook));
 
             //Get all books
             library.PrintBooks();
@@ -39,10 +39,31 @@ public class Main {
             //filter them
             library.FilterBooks(null,"Novel");
 
-            //reader gets a book
-            //reade1.
+            //library lends the book
+            var book1=library.getBook("No longer human");
+            System.out.println(book1.getTitle()+" is available: "+book1.getAvailable() );
+            library.LendBook(book1,reader1);
+            System.out.println(book1.getTitle()+" is available: "+book1.getAvailable() );
+
+            //reader takes the book
+            var book2 = library.getBook("1984");
+            //reader1.addBookToReader(book1);---exeption
+            reader1.addBookToReader(book2);
+
+            //check all reader1's books
+            System.out.println("\nAll "+ reader1.getFirstName()+"'s books:");
+            reader1.PrintAllReaderBooks();
+
+            //return a book
+            reader1.returnBookToLibrary(book1);
+            System.out.println("\nAll "+ reader1.getFirstName()+"'s books:");
+            reader1.PrintAllReaderBooks();
         }
         catch(IllegalArgumentException ex)
+        {
+            System.out.println(ex.getMessage());
+        }
+        catch (Exception ex)
         {
             System.out.println(ex.getMessage());
         }

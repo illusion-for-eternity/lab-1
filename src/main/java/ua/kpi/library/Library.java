@@ -58,13 +58,32 @@ public class Library {
         }
     }
 
+    public Book getBook(String title)
+    {
+        for(Book book:books)
+        {
+            if(book.getTitle()==title)
+            {
+                if(book.getAvailable()==true)
+                {
+                    return book;
+                }
+                else
+                {
+                    throw new IllegalArgumentException("This book currently isn't available") ;
+                }
+            }
+        }
+        throw new IllegalArgumentException("There is no book with that title") ;
+    }
+
     public void LendBook(Book book,Reader reader)
     {
-       if(book.getLended()==false)
+       if(book.getAvailable()==true)
        {
            reader.addBookToReader(book);
-           book.setLended(true);
-           System.out.println(reader.getFirstName()+ " "+ reader.getLastName()+ "took a book - "+book.getTitle());
+           book.setAvailable(false);
+           System.out.println(reader.getLastName()+ " " + reader.getFirstName()+ " took a book - "+book.getTitle());
        }
        else
        {

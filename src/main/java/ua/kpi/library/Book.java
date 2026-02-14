@@ -10,7 +10,7 @@ public class Book {
 
     private String genre;
 
-    private boolean lended=false;
+    private boolean available=true;
 
     public  Book(String title,String author,String genre){
         this.title=title;
@@ -24,7 +24,7 @@ public class Book {
                 "title='" + title + '\'' +
                 ", author='" + author + '\'' +
                 ", genre='" + genre + '\'' +
-                ", lended=" + lended +
+                ", available=" + available +
                 '}';
     }
 
@@ -67,11 +67,11 @@ public class Book {
         this.genre=genre;
     }
 
-    public boolean getLended() {
-        return lended;
+    public boolean getAvailable() {
+        return available;
     }
 
-    public void setLended(boolean lended) {
-        this.lended = lended;
+    public void setAvailable(boolean available) {
+        this.available = available;
     }
 }

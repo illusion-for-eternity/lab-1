@@ -34,7 +34,15 @@ public class Reader {
             throw new IllegalArgumentException("Reader doesn't have this book");
         }
         booksTaken.remove(book);
-        book.setLended(false);
+        book.setAvailable(true);
+    }
+
+    public void PrintAllReaderBooks()
+    {
+        for(Book book:booksTaken)
+        {
+            System.out.println(book.getTitle());
+        }
     }
 
     public String getFirstName() {
