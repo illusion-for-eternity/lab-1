@@ -8,6 +8,35 @@ public class Reader {
 
     private String firstName;
 
+    private String lastName;
+
+    private String password;
+
+    public Reader(String firstName,String lastName,String password) {
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+    }
+
+    public void addBookToReader(Book book)
+    {
+        if(booksTaken.contains(book))
+        {
+            throw new IllegalArgumentException("Reader already has this book");
+        }
+        booksTaken.add(book);
+    }
+
+    public void returnBookToLibrary(Book book)
+    {
+        if(!booksTaken.contains(book))
+        {
+            throw new IllegalArgumentException("Reader doesn't have this book");
+        }
+        booksTaken.remove(book);
+        book.setLended(false);
+    }
+
     public String getFirstName() {
         return firstName;
     }
@@ -15,8 +44,6 @@ public class Reader {
     public void setFirstName(String firstName) {
         this.firstName = firstName;
     }
-
-    private String lastName;
 
     public String getLastName() {
         return lastName;
@@ -26,8 +53,6 @@ public class Reader {
         this.lastName = lastName;
     }
 
-    private String password;
-
     public String getPassword() {
         return password;
     }
@@ -35,24 +60,4 @@ public class Reader {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    public Reader(String firstName,String lastName,String password) {
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.password = password;
-    }
-
-    public void add(Book book)
-    {
-        booksTaken.add(book);
-    }
-
-    public void remove(Book book)
-    {
-        booksTaken.remove(book);
-    }
-
-
-
-//class collection
 }

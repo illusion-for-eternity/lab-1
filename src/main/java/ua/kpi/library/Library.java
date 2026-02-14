@@ -14,26 +14,6 @@ public class Library {
         this.readers=readers;
     }
 
-    public void setBook(Book book)
-    {
-        books.add(book);
-    }
-
-    public void removeBook(Book book)
-    {
-        books.remove(book);
-    }
-
-    public void setReader(Reader reader)
-    {
-        readers.add(reader);
-    }
-
-    public void removeReader(Reader reader)
-    {
-        readers.remove(reader);
-    }
-
     public void PrintBooks()
     {
         for(Book book:books)
@@ -82,9 +62,13 @@ public class Library {
     {
        if(book.getLended()==false)
        {
-           reader.add(book);
+           reader.addBookToReader(book);
            book.setLended(true);
            System.out.println(reader.getFirstName()+ " "+ reader.getLastName()+ "took a book - "+book.getTitle());
+       }
+       else
+       {
+           throw new IllegalArgumentException("This book was taken by another reader");
        }
     }
 
@@ -96,5 +80,25 @@ public class Library {
     @Override
     public int hashCode() {
         return super.hashCode();
+    }
+
+    public void setBook(Book book)
+    {
+        books.add(book);
+    }
+
+    public void removeBook(Book book)
+    {
+        books.remove(book);
+    }
+
+    public void setReader(Reader reader)
+    {
+        readers.add(reader);
+    }
+
+    public void removeReader(Reader reader)
+    {
+        readers.remove(reader);
     }
 }
