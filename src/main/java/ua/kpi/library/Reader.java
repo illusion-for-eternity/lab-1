@@ -1,6 +1,7 @@
 package ua.kpi.library;
 
 import java.util.ArrayList;
+import java.util.Objects;
 
 public class Reader {
 
@@ -43,6 +44,18 @@ public class Reader {
         {
             System.out.println(book.getTitle());
         }
+    }
+
+    @Override
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Reader reader = (Reader) o;
+        return Objects.equals(booksTaken, reader.booksTaken) && Objects.equals(firstName, reader.firstName) && Objects.equals(lastName, reader.lastName) && Objects.equals(password, reader.password);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(booksTaken, firstName, lastName, password);
     }
 
     public String getFirstName() {

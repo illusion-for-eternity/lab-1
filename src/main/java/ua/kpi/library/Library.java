@@ -77,6 +77,16 @@ public class Library {
         throw new IllegalArgumentException("There is no book with that title") ;
     }
 
+    public Book getBook(int index)
+    {
+        return books.get(index);
+    }
+
+    public Reader getReader(int index)
+    {
+        return readers.get(index);
+    }
+
     public void LendBook(Book book,Reader reader)
     {
        if(book.getAvailable()==true)

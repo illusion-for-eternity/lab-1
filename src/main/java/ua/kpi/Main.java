@@ -22,10 +22,8 @@ public class Main {
             ArrayList<Reader> readers = new ArrayList<Reader>();
             Reader reader1=new Reader("Miku","Hatsune","39");
             readers.add(reader1);
-            Reader reader2=new Reader("Rin","Kagamine","12345");
-            readers.add(reader2);
-            Reader reader3=new Reader("Len","Kagamine","54321");
-            readers.add(reader3);
+            readers.add(new Reader("Rin","Kagamine","12345"));
+            readers.add(new Reader("Len","Kagamine","54321"));
 
             Library library= new Library(books,readers);
 
@@ -58,6 +56,7 @@ public class Main {
             reader1.returnBookToLibrary(book1);
             System.out.println("\nAll "+ reader1.getFirstName()+"'s books:");
             reader1.PrintAllReaderBooks();
+
         }
         catch(IllegalArgumentException ex)
         {
