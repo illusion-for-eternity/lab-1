@@ -8,58 +8,51 @@ public class Library {
 
     private ArrayList<Reader> readers;
 
-    public Library(ArrayList<Book> books, ArrayList<Reader> readers)
-    {
+    public Library(ArrayList<Book> books, ArrayList<Reader> readers) {
         this.books=books;
         this.readers=readers;
     }
 
-    public void PrintBooks()
-    {
-        for(Book book:books)
-        {
-            System.out.println(book.toString());
-        }
+    public ArrayList<Book> GetAllBooks() {
+return books;
     }
 
-    public void PrintReaders()
-    {
-        for(Reader reader:readers)
-        {
-            System.out.println(reader.toString());
-        }
+    public ArrayList<Reader> GetAllReaders() {
+return readers;
     }
 
-    public void FilterBooks(String author, String genre)
-    {
+    public ArrayList<Book> GetFilteredBooks(String author, String genre) {
+        ArrayList<Book> filteredBooks= new ArrayList<>();
+
         for(Book book:books)
         {
             if(author!=null && genre!=null)
             {
                 if(Objects.equals(book.getAuthor(), author) && Objects.equals(book.getGenre(), genre))
                 {
-                    System.out.println(book.toString());
+                    filteredBooks.add(book);
                 }
             }
             else if(genre!=null)
             {
                 if(Objects.equals(book.getGenre(), genre))
                 {
-                    System.out.println(book.toString());
+                    filteredBooks.add(book);
                 }
             }
             else if(author!=null)
             {
                 if(Objects.equals(book.getAuthor(), author))
                 {
-                    System.out.println(book.toString());
+                    filteredBooks.add(book);
                 }
             }
         }
+
+        return filteredBooks;
     }
 
-    public Book getBook(String title)
-    {
+    public Book getBook(String title) {
         for(Book book:books)
         {
             if(Objects.equals(book.getTitle(), title))
@@ -77,22 +70,23 @@ public class Library {
         throw new IllegalArgumentException("There is no book with that title") ;
     }
 
-    public Book getBook(int index)
-    {
-        return books.get(index);
+    public Book getBook(int index) {
+        if(books.get(index).getAvailable())
+        {
+            return books.get(index);
+        }
+        return null;
     }
 
-    public Reader getReader(int index)
-    {
+    public Reader getReader(int index) {
         return readers.get(index);
     }
 
-    public void LendBook(Book book,Reader reader)
-    {
+    public void LendBook(Book book,Reader reader) {
        if(book.getAvailable())
        {
            reader.addBookToReader(book);
-           book.setAvailable(false);
+           book.borrow();
            System.out.println(reader.getLastName()+ " " + reader.getFirstName()+ " took a book - "+book.getTitle());
        }
        else
@@ -102,32 +96,30 @@ public class Library {
     }
 
     @Override
-    public boolean equals(Object obj) {
-        return super.equals(obj);
+    public boolean equals(Object o) {
+        if (o == null || getClass() != o.getClass()) return false;
+        Library library = (Library) o;
+        return Objects.equals(books, library.books) && Objects.equals(readers, library.readers);
     }
 
     @Override
     public int hashCode() {
-        return super.hashCode();
+        return Objects.hash(books, readers);
     }
 
-    public void setBook(Book book)
-    {
+    public void setBook(Book book) {
         books.add(book);
     }
 
-    public void removeBook(Book book)
-    {
+    public void removeBook(Book book) {
         books.remove(book);
     }
 
-    public void setReader(Reader reader)
-    {
+    public void setReader(Reader reader) {
         readers.add(reader);
     }
 
-    public void removeReader(Reader reader)
-    {
+    public void removeReader(Reader reader) {
         readers.remove(reader);
     }
 }

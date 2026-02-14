@@ -19,8 +19,7 @@ public class Reader {
         this.password = password;
     }
 
-    public void addBookToReader(Book book)
-    {
+    public void addBookToReader(Book book) {
         if(booksTaken.contains(book))
         {
             throw new IllegalArgumentException("Reader already has this book");
@@ -28,22 +27,17 @@ public class Reader {
         booksTaken.add(book);
     }
 
-    public void returnBookToLibrary(Book book)
-    {
+    public void returnBookToLibrary(Book book) {
         if(!booksTaken.contains(book))
         {
             throw new IllegalArgumentException("Reader doesn't have this book");
         }
         booksTaken.remove(book);
-        book.setAvailable(true);
+        book.returnBook();
     }
 
-    public void PrintAllReaderBooks()
-    {
-        for(Book book:booksTaken)
-        {
-            System.out.println(book.getTitle());
-        }
+    public ArrayList<Book> GetAllReaderBooks() {
+return  booksTaken;
     }
 
     @Override

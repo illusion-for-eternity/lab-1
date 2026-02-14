@@ -32,10 +32,12 @@ public class Main {
             System.out.println("book.equals(): "+books.get(4).equals(conceteBook));
 
             //Get all books
-            library.PrintBooks();
+            ArrayList<Book> allBooks=library.GetAllBooks();
+            PrintList(allBooks);
 
             //filter them
-            library.FilterBooks(null,"Novel");
+            ArrayList<Book> filteredBooks=library.GetFilteredBooks(null,"Novel");
+            PrintList(filteredBooks);
 
             //library lends the book
             var book1=library.getBook("No longer human");
@@ -50,12 +52,14 @@ public class Main {
 
             //check all reader1's books
             System.out.println("\nAll "+ reader1.getFirstName()+"'s books:");
-            reader1.PrintAllReaderBooks();
+            ArrayList<Book> readersBook= reader1.GetAllReaderBooks();
+            PrintList(readersBook);
 
             //return a book
             reader1.returnBookToLibrary(book1);
             System.out.println("\nAll "+ reader1.getFirstName()+"'s books:");
-            reader1.PrintAllReaderBooks();
+            ArrayList<Book> readersBook2= reader1.GetAllReaderBooks();
+            PrintList(readersBook2);
 
         }
         catch(IllegalArgumentException ex)
@@ -67,5 +71,12 @@ public class Main {
             System.out.println(ex.getMessage());
         }
 
+    }
+
+    static <T>void PrintList(ArrayList<T> list)
+    {
+        for (T item : list) {
+            System.out.println(item.toString());
+        }
     }
 }
