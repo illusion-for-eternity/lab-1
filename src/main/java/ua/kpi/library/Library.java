@@ -87,7 +87,6 @@ return readers;
        {
            reader.addBookToReader(book);
            book.borrow();
-           System.out.println(reader.getLastName()+ " " + reader.getFirstName()+ " took a book - "+book.getTitle());
        }
        else
        {
