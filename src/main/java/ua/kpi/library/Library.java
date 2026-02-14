@@ -36,21 +36,21 @@ public class Library {
         {
             if(author!=null && genre!=null)
             {
-                if(book.getAuthor()==author && book.getGenre()==genre)
+                if(Objects.equals(book.getAuthor(), author) && Objects.equals(book.getGenre(), genre))
                 {
                     System.out.println(book.toString());
                 }
             }
             else if(genre!=null)
             {
-                if(book.getGenre()==genre)
+                if(Objects.equals(book.getGenre(), genre))
                 {
                     System.out.println(book.toString());
                 }
             }
             else if(author!=null)
             {
-                if(book.getAuthor()==author)
+                if(Objects.equals(book.getAuthor(), author))
                 {
                     System.out.println(book.toString());
                 }
@@ -62,9 +62,9 @@ public class Library {
     {
         for(Book book:books)
         {
-            if(book.getTitle()==title)
+            if(Objects.equals(book.getTitle(), title))
             {
-                if(book.getAvailable()==true)
+                if(book.getAvailable())
                 {
                     return book;
                 }
@@ -89,7 +89,7 @@ public class Library {
 
     public void LendBook(Book book,Reader reader)
     {
-       if(book.getAvailable()==true)
+       if(book.getAvailable())
        {
            reader.addBookToReader(book);
            book.setAvailable(false);
