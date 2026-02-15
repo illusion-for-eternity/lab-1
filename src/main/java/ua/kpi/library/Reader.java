@@ -30,7 +30,7 @@ public class Reader {
     public void returnBookToLibrary(Book book) {
         if(!booksTaken.contains(book))
         {
-            throw new IllegalArgumentException("Reader doesn't have this book");
+            throw new IllegalArgumentException("You don't have this book");
         }
         booksTaken.remove(book);
         book.returnBook();
