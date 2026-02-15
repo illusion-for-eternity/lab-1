@@ -19,6 +19,18 @@ public class Reader {
         this.password = password;
     }
 
+    public Book getBook(String title) {
+        for(Book book:booksTaken)
+        {
+            if(Objects.equals(book.getTitle(), title))
+            {
+                return book;
+            }
+        }
+
+        throw new IllegalArgumentException("You don't have this book");
+    }
+
     public void addBookToReader(Book book) {
         if(booksTaken.contains(book))
         {
