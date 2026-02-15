@@ -82,6 +82,17 @@ return readers;
         return readers.get(index);
     }
 
+    public Reader getReader(String name,String password) {
+        for(Reader reader: readers)
+        {
+            if(Objects.equals(reader.getFirstName(),name) && Objects.equals(reader.getPassword(),password))
+            {
+                return reader;
+            }
+        }
+        throw new IllegalArgumentException("User not found");
+    }
+
     public void LendBook(Book book,Reader reader) {
        if(book.getAvailable())
        {
@@ -90,7 +101,7 @@ return readers;
        }
        else
        {
-           throw new IllegalArgumentException("This book was taken by another reader");
+           throw new IllegalArgumentException("This book was taken by another user");
        }
     }
 
