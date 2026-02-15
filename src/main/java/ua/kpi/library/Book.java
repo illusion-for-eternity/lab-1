@@ -18,17 +18,16 @@ public class Book {
         this.genre=genre;
     }
 
-    public void borrow()
-    {
+    public void borrow() {
         if(available)
         {
             available=false;
+            return;
         }
         throw new IllegalStateException("Book is already borrowed");
     }
 
-    public void returnBook()
-    {
+    public void returnBook() {
         if (available) {
             throw new IllegalStateException("Book is not borrowed");
         }
