@@ -22,30 +22,44 @@ return readers;
     }
 
     public ArrayList<Book> GetFilteredBooks(String author, String genre) {
+
         ArrayList<Book> filteredBooks= new ArrayList<>();
 
         for(Book book:books)
         {
-            if(author!=null && genre!=null)
-            {
                 if(Objects.equals(book.getAuthor(), author) && Objects.equals(book.getGenre(), genre))
                 {
                     filteredBooks.add(book);
                 }
-            }
-            else if(genre!=null)
-            {
-                if(Objects.equals(book.getGenre(), genre))
-                {
-                    filteredBooks.add(book);
-                }
-            }
-            else if(author!=null)
-            {
+        }
+
+        return filteredBooks;
+    }
+
+    public ArrayList<Book> GetFilteredByAuthor(String author) {
+
+        ArrayList<Book> filteredBooks= new ArrayList<>();
+
+        for(Book book:books)
+        {
                 if(Objects.equals(book.getAuthor(), author))
                 {
                     filteredBooks.add(book);
                 }
+        }
+
+        return filteredBooks;
+    }
+
+    public ArrayList<Book> GetFilteredByGenre(String genre) {
+
+        ArrayList<Book> filteredBooks= new ArrayList<>();
+
+        for(Book book:books)
+        {
+            if(Objects.equals(book.getGenre(), genre))
+            {
+                filteredBooks.add(book);
             }
         }
 
