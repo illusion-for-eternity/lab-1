@@ -2,6 +2,8 @@ package ua.kpi;
 import ua.kpi.library.Book;
 import ua.kpi.library.Library;
 import ua.kpi.library.Reader;
+
+import java.io.*;
 import java.util.ArrayList;
 import java.util.Objects;
 import java.util.Scanner;
@@ -73,10 +75,9 @@ public class Main {
 //            String password= in.next();
 //            var reader=library.getReader(name,password);
             var reader=library.getReader("Miku","39");
-            
-            boolean visitLibrary=true;
 
-           // for (int i = 0; i < 50; i++) System.out.println();
+            //7
+            boolean visitLibrary=true;
 
             while(visitLibrary)
             {
@@ -152,6 +153,34 @@ public class Main {
                 }
             }
 
+            //6
+
+            try(BufferedWriter bw= new BufferedWriter(new FileWriter("objects.txt")))
+            {
+                for(Book book: books)
+                {
+                    String bookInfo=book.toString();
+                    bw.write(bookInfo);
+                    bw.write("\n");
+                }
+            }
+            catch (IOException ex)
+            {
+                System.out.println(ex.getMessage());
+            }
+
+            try(BufferedReader br = new BufferedReader(new FileReader("objects.txt")))
+            {
+                String s;
+                while((s=br.readLine())!=null)
+                {
+                    System.out.println(s);
+                }
+            }
+            catch (IOException ex) {
+                System.out.println(ex.getMessage());
+            }
+
         }
         catch(IllegalArgumentException ex)
         {
@@ -166,7 +195,7 @@ public class Main {
 
     static <T>void PrintList(ArrayList<T> list)
     {
-        if(list.size()==0)
+        if(list.isEmpty())
         {
             System.out.println("List is empty");
             return;
