@@ -1,10 +1,12 @@
 package ua.kpi;
 import ua.kpi.library.Book;
+import ua.kpi.library.Comparator.*;
 import ua.kpi.library.Library;
 import ua.kpi.library.Reader;
 
 import java.io.*;
 import java.util.ArrayList;
+import java.util.Comparator;
 import java.util.Objects;
 import java.util.Scanner;
 
@@ -25,7 +27,7 @@ public class Main {
             ArrayList<Reader> readers = new ArrayList<Reader>();
             Reader reader1=new Reader("Miku","Hatsune","39");
             readers.add(reader1);
-            readers.add(new Reader("Rin","Kagamine","12345"));
+            readers.add(new Reader("Rin","Kagamine","012345"));
             readers.add(new Reader("Len","Kagamine","54321"));
 
             Library library= new Library(books,readers);
@@ -155,6 +157,31 @@ public class Main {
 
             //6
 
+            System.out.print("Sort books by (title,author): ");
+            String sortOption=in.nextLine();
+            if(Objects.equals(sortOption,"title"))
+            {
+                books.sort(new BookTitleComparator());
+            }
+            else if (Objects.equals(sortOption,"author"))
+            {
+                books.sort(new BookAuthorComparor());
+            }
+
+            System.out.print("Sort reader by (name,password[Length]): ");
+
+            Comparator<Reader> totalComparator=new ReaderNameComparator().thenComparing(new ReaderSurnameComparator());
+
+            String sortOption2=in.nextLine();
+            if(Objects.equals(sortOption2,"name"))
+            {
+                readers.sort(totalComparator);
+            }
+            else if (Objects.equals(sortOption2,"password"))
+            {
+                readers.sort(new ReaderPasswordComparator());
+            }
+
             try(BufferedWriter bw= new BufferedWriter(new FileWriter("objects.txt")))
             {
                 for(Book book: books)
@@ -163,11 +190,22 @@ public class Main {
                     bw.write(bookInfo);
                     bw.write("\n");
                 }
+
+                bw.write("\n");
+
+                for(Reader reader2: readers)
+                {
+                    String readerInfo=reader2.toString();
+                    bw.write(readerInfo);
+                    bw.write("\n");
+                }
             }
             catch (IOException ex)
             {
                 System.out.println(ex.getMessage());
             }
+
+            System.out.println("\nImport of objects:\n");
 
             try(BufferedReader br = new BufferedReader(new FileReader("objects.txt")))
             {
