@@ -64,6 +64,15 @@ return  booksTaken;
         return Objects.hash(booksTaken, firstName, lastName, password);
     }
 
+    @Override
+    public String toString() {
+        return "Reader{" +
+                "lastName='" + lastName + '\'' +
+                ", firstName='" + firstName + '\'' +
+                ", password='" + password + '\'' +
+                '}';
+    }
+
     public String getFirstName() {
         return firstName;
     }
