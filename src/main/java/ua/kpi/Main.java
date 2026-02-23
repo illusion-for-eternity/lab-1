@@ -10,7 +10,6 @@ import java.util.Comparator;
 import java.util.Objects;
 import java.util.Scanner;
 
-//rewrite GetFilteredBooks method(override)
 public class Main {
     public static void main(String[] args) {
 
@@ -32,42 +31,6 @@ public class Main {
 
             Library library= new Library(books,readers);
 
-//            //Part-1: Equals
-//            Book conceteBook=new Book("The Metamorphosis", "Franz Kafka", "Novella");
-//            System.out.println("book.equals(): "+books.get(4).equals(conceteBook));
-//
-//            //Get all books
-//            ArrayList<Book> allBooks=library.GetAllBooks();
-//            PrintList(allBooks);
-//
-//            //filter them
-//            ArrayList<Book> filteredBooks=library.GetFilteredBooks(null,"Novel");
-//            PrintList(filteredBooks);
-//
-//            //library lends the book
-//            var book1=library.getBook("No longer human");
-//            System.out.println(book1.getTitle()+" is available: "+book1.getAvailable() );
-//            library.LendBook(book1,reader1);
-//            System.out.println(book1.getTitle()+" is available: "+book1.getAvailable() );
-//
-//            //reader takes the book
-//            var book2 = library.getBook("1984");
-//            //reader1.addBookToReader(book1);---exeption
-//            reader1.addBookToReader(book2);
-//
-//            //check all reader1's books
-//            System.out.println("\nAll "+ reader1.getFirstName()+"'s books:");
-//            ArrayList<Book> readersBook= reader1.GetAllReaderBooks();
-//            PrintList(readersBook);
-//
-//            //return a book
-//            reader1.returnBookToLibrary(book1);
-//            System.out.println("\nAll "+ reader1.getFirstName()+"'s books:");
-//            ArrayList<Book> readersBook2= reader1.GetAllReaderBooks();
-//            PrintList(readersBook2);
-
-
-
             Scanner in= new Scanner(System.in);
 
             System.out.println("Welcome!");
@@ -79,17 +42,15 @@ public class Main {
             var reader=library.getReader("Miku","39");
 
             //7
+            String [] menuOptions= new String[]{"1. Get book","2. Return book","3. See all books",
+                    "4. Filter books","5. Output all user's books","6. Leave the library"};
             boolean visitLibrary=true;
 
             while(visitLibrary)
             {
                 System.out.println();
-                System.out.println("1. Get book");
-                System.out.println("2. Return book");
-                System.out.println("3. See all books");
-                System.out.println("4. Filter books");
-                System.out.println("5. Output all user's books");
-                System.out.println("6. Leave the library");
+                PrintArray(menuOptions);
+                System.out.println();
                 System.out.print("Option:");
                 int num=Integer.parseInt(in.nextLine());
                 if(num==1)
@@ -240,6 +201,14 @@ public class Main {
         }
         for (T item : list) {
             System.out.println(item.toString());
+        }
+    }
+
+    static void PrintArray(String[] array)
+    {
+        for(String str:array)
+        {
+            System.out.print(str+"| ");
         }
     }
 }
