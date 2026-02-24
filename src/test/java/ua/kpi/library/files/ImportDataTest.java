@@ -42,7 +42,7 @@ class ImportDataTest {
         ImportData importData = new ImportData("objects.txt");
         ArrayList list = importData.importObjects();
 
-        int count=books.size()+readers.size();
+        int count = books.size() + readers.size();
         Assertions.assertEquals(count, list.size());
     }
 }

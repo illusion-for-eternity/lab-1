@@ -11,15 +11,15 @@ import java.util.ArrayList;
 public class ExportData {
     private String filePath;
 
-    public ExportData(String path){
-        this.filePath=path;
+    public ExportData(String path) {
+        this.filePath = path;
     }
 
     public String getFilePath() {
         return filePath;
     }
 
-    public void exportObjects(ArrayList<Book> books, ArrayList<Reader> readers ){
+    public void exportObjects(ArrayList<Book> books, ArrayList<Reader> readers) {
         if (books == null || readers == null) {
             throw new IllegalArgumentException("Books or readers list is null");
         }

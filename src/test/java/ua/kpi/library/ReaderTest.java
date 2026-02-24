@@ -1,12 +1,10 @@
 package ua.kpi.library;
 
-import org.junit.Assert;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 
-import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -46,15 +44,14 @@ class ReaderTest {
     }
 
     @Test
-    public void lendTheSameBookToReader()
-    {
-        Book book1= mock(Book.class);
-        Book book2=book1;
+    public void lendTheSameBookToReader() {
+        Book book1 = mock(Book.class);
+        Book book2 = book1;
         reader.addBookToReader(book1);
 
         IllegalArgumentException exeption = Assertions.assertThrows(IllegalArgumentException.class, ()
                 -> reader.addBookToReader(book2));
 
-        Assertions.assertEquals("Reader already has this book",exeption.getMessage());
+        Assertions.assertEquals("Reader already has this book", exeption.getMessage());
     }
 }

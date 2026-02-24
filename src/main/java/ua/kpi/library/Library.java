@@ -9,28 +9,26 @@ public class Library {
     private ArrayList<Reader> readers;
 
     public Library(ArrayList<Book> books, ArrayList<Reader> readers) {
-        this.books=books;
-        this.readers=readers;
+        this.books = books;
+        this.readers = readers;
     }
 
     public ArrayList<Book> GetAllBooks() {
-return books;
+        return books;
     }
 
     public ArrayList<Reader> GetAllReaders() {
-return readers;
+        return readers;
     }
 
     public ArrayList<Book> GetFilteredBooks(String author, String genre) {
 
-        ArrayList<Book> filteredBooks= new ArrayList<>();
+        ArrayList<Book> filteredBooks = new ArrayList<>();
 
-        for(Book book:books)
-        {
-                if(Objects.equals(book.getAuthor(), author) && Objects.equals(book.getGenre(), genre))
-                {
-                    filteredBooks.add(book);
-                }
+        for (Book book : books) {
+            if (Objects.equals(book.getAuthor(), author) && Objects.equals(book.getGenre(), genre)) {
+                filteredBooks.add(book);
+            }
         }
 
         return filteredBooks;
@@ -38,14 +36,12 @@ return readers;
 
     public ArrayList<Book> GetFilteredByAuthor(String author) {
 
-        ArrayList<Book> filteredBooks= new ArrayList<>();
+        ArrayList<Book> filteredBooks = new ArrayList<>();
 
-        for(Book book:books)
-        {
-                if(Objects.equals(book.getAuthor(), author))
-                {
-                    filteredBooks.add(book);
-                }
+        for (Book book : books) {
+            if (Objects.equals(book.getAuthor(), author)) {
+                filteredBooks.add(book);
+            }
         }
 
         return filteredBooks;
@@ -53,12 +49,10 @@ return readers;
 
     public ArrayList<Book> GetFilteredByGenre(String genre) {
 
-        ArrayList<Book> filteredBooks= new ArrayList<>();
+        ArrayList<Book> filteredBooks = new ArrayList<>();
 
-        for(Book book:books)
-        {
-            if(Objects.equals(book.getGenre(), genre))
-            {
+        for (Book book : books) {
+            if (Objects.equals(book.getGenre(), genre)) {
                 filteredBooks.add(book);
             }
         }
@@ -67,26 +61,20 @@ return readers;
     }
 
     public Book getBook(String title) {
-        for(Book book:books)
-        {
-            if(Objects.equals(book.getTitle(), title))
-            {
-                if(book.getAvailable())
-                {
+        for (Book book : books) {
+            if (Objects.equals(book.getTitle(), title)) {
+                if (book.getAvailable()) {
                     return book;
-                }
-                else
-                {
-                    throw new IllegalArgumentException("This book currently isn't available") ;
+                } else {
+                    throw new IllegalArgumentException("This book currently isn't available");
                 }
             }
         }
-        throw new IllegalArgumentException("There is no book with that title") ;
+        throw new IllegalArgumentException("There is no book with that title");
     }
 
     public Book getBook(int index) {
-        if(books.get(index).getAvailable())
-        {
+        if (books.get(index).getAvailable()) {
             return books.get(index);
         }
         return null;
@@ -96,27 +84,22 @@ return readers;
         return readers.get(index);
     }
 
-    public Reader getReader(String name,String password) {
-        for(Reader reader: readers)
-        {
-            if(Objects.equals(reader.getFirstName(),name) && Objects.equals(reader.getPassword(),password))
-            {
+    public Reader getReader(String name, String password) {
+        for (Reader reader : readers) {
+            if (Objects.equals(reader.getFirstName(), name) && Objects.equals(reader.getPassword(), password)) {
                 return reader;
             }
         }
-        throw new IllegalArgumentException("User not found");
+        throw new IllegalArgumentException("Reader not found");
     }
 
-    public void LendBook(Book book,Reader reader) {
-       if(book.getAvailable())
-       {
-           reader.addBookToReader(book);
-           book.borrow();
-       }
-       else
-       {
-           throw new IllegalArgumentException("This book was taken by another user");
-       }
+    public void LendBook(Book book, Reader reader) {
+        if (book.getAvailable()) {
+            reader.addBookToReader(book);
+            book.borrow();
+        } else {
+            throw new IllegalArgumentException("This book was taken by another reader");
+        }
     }
 
     @Override
@@ -136,6 +119,9 @@ return readers;
     }
 
     public void removeBook(Book book) {
+        if (!books.contains(book)) {
+            throw new IllegalArgumentException("There is no such book");
+        }
         books.remove(book);
     }
 
@@ -144,6 +130,9 @@ return readers;
     }
 
     public void removeReader(Reader reader) {
+        if (!readers.contains(reader)) {
+            throw new IllegalArgumentException("There is no such reader");
+        }
         readers.remove(reader);
     }
 }

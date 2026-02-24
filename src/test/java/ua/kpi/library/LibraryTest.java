@@ -6,7 +6,6 @@ import org.junit.jupiter.api.Test;
 
 import java.util.ArrayList;
 
-import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -56,9 +55,8 @@ class LibraryTest {
     }
 
     @Test
-    public void GetNotAvailableBook()
-    {
-        Book book = new Book("title","authot","genre");
+    public void GetNotAvailableBook() {
+        Book book = new Book("title", "authot", "genre");
         book.borrow();
         library.setBook(book);
 
@@ -69,9 +67,8 @@ class LibraryTest {
     }
 
     @Test
-    public void GetNonExistantBook()
-    {
-        Book book = new Book("title","authot","genre");
+    public void GetNonExistantBook() {
+        Book book = new Book("title", "authot", "genre");
         book.borrow();
         library.setBook(book);
 
@@ -82,24 +79,24 @@ class LibraryTest {
     }
 
     @Test
-    public void FilterWithNoBooks(){
-        var result =library.GetFilteredByAuthor("Osamu Dazai");
-        Assertions.assertEquals(new ArrayList<>(),result);
+    public void FilterWithNoBooks() {
+        var result = library.GetFilteredByAuthor("Osamu Dazai");
+        Assertions.assertEquals(new ArrayList<>(), result);
     }
 
     @Test
-    public void FilterBooksByGenre(){
-        Book book1= new Book("No longer human", "Osamu Dazai", "Novel");
-        Book book2= new Book("Doctor Serafikus", "Domogtovich", "Novel");
+    public void FilterBooksByGenre() {
+        Book book1 = new Book("No longer human", "Osamu Dazai", "Novel");
+        Book book2 = new Book("Doctor Serafikus", "Domogtovich", "Novel");
         library.setBook(book1);
         library.setBook(book2);
         library.setBook(new Book("The Metamorphosis", "Franz Kafka", "Novella"));
 
-        var result =library.GetFilteredByGenre("Novel");
+        var result = library.GetFilteredByGenre("Novel");
 
         ArrayList<Book> list = new ArrayList<>();
         list.add(book1);
         list.add(book2);
-        Assertions.assertEquals(list,result);
+        Assertions.assertEquals(list, result);
     }
 }

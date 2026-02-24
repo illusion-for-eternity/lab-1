@@ -5,7 +5,7 @@ import java.util.Objects;
 
 public class Reader {
 
-    private ArrayList<Book> booksTaken=new ArrayList<>();
+    private ArrayList<Book> booksTaken = new ArrayList<>();
 
     private String firstName;
 
@@ -13,17 +13,15 @@ public class Reader {
 
     private String password;
 
-    public Reader(String firstName,String lastName,String password) {
+    public Reader(String firstName, String lastName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
         this.password = password;
     }
 
     public Book getBook(String title) {
-        for(Book book:booksTaken)
-        {
-            if(Objects.equals(book.getTitle(), title))
-            {
+        for (Book book : booksTaken) {
+            if (Objects.equals(book.getTitle(), title)) {
                 return book;
             }
         }
@@ -32,16 +30,14 @@ public class Reader {
     }
 
     public void addBookToReader(Book book) {
-        if(booksTaken.contains(book))
-        {
+        if (booksTaken.contains(book)) {
             throw new IllegalArgumentException("Reader already has this book");
         }
         booksTaken.add(book);
     }
 
     public void returnBookToLibrary(Book book) {
-        if(!booksTaken.contains(book))
-        {
+        if (!booksTaken.contains(book)) {
             throw new IllegalArgumentException("You don't have this book");
         }
         booksTaken.remove(book);
@@ -49,7 +45,7 @@ public class Reader {
     }
 
     public ArrayList<Book> GetAllReaderBooks() {
-return  booksTaken;
+        return booksTaken;
     }
 
     @Override

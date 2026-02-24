@@ -62,6 +62,6 @@ class ExportDataTest {
 
         ExportData export = new ExportData("objects.txt");
 
-        assertThrows(IllegalArgumentException.class,()->export.exportObjects(null, null));
+        assertThrows(IllegalArgumentException.class, () -> export.exportObjects(null, null));
     }
 }

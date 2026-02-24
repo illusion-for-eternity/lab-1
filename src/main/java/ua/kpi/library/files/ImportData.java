@@ -6,27 +6,27 @@ import java.io.IOException;
 import java.util.ArrayList;
 
 public class ImportData {
-        private String filePath;
+    private String filePath;
 
-        public ImportData(String path){
-            this.filePath=path;
-        }
+    public ImportData(String path) {
+        this.filePath = path;
+    }
 
-        public String getFilePath() {
-            return filePath;
-        }
+    public String getFilePath() {
+        return filePath;
+    }
 
-        public ArrayList<String> importObjects(){
-            ArrayList<String> lines=new ArrayList<>();
-            try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
-                String s;
-                while ((s = br.readLine()) != null) {
-                    lines.add(s);
-                    //System.out.println(s);
-                }
-            } catch (IOException e) {
-                throw new RuntimeException(e.getMessage());
+    public ArrayList<String> importObjects() {
+        ArrayList<String> lines = new ArrayList<>();
+        try (BufferedReader br = new BufferedReader(new FileReader(filePath))) {
+            String s;
+            while ((s = br.readLine()) != null) {
+                lines.add(s);
+                //System.out.println(s);
             }
-            return lines;
+        } catch (IOException e) {
+            throw new RuntimeException(e.getMessage());
         }
+        return lines;
+    }
 }

@@ -1,7 +1,6 @@
 package ua.kpi.library;
 import java.util.Objects;
 
-//prototype for books
 public class Book {
 
     private String title;
@@ -10,18 +9,17 @@ public class Book {
 
     private String genre;
 
-    private boolean available=true;
+    private boolean available = true;
 
-    public  Book(String title,String author,String genre){
-        this.title=title;
-        this.author=author;
-        this.genre=genre;
+    public Book(String title, String author, String genre) {
+        this.title = title;
+        this.author = author;
+        this.genre = genre;
     }
 
     public void borrow() {
-        if(available)
-        {
-            available=false;
+        if (available) {
+            available = false;
             return;
         }
         throw new IllegalStateException("Book is already borrowed");
@@ -60,27 +58,24 @@ public class Book {
         return title;
     }
 
-    public void setTitle(String title)
-    {
-        this.title=title;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
-    public String getAuthor(){
+    public String getAuthor() {
         return author;
     }
 
-    public void setAuthor(String author)
-    {
-        this.author=author;
+    public void setAuthor(String author) {
+        this.author = author;
     }
 
-    public String getGenre(){
+    public String getGenre() {
         return genre;
     }
 
-    public void setGenre(String genre)
-    {
-        this.genre=genre;
+    public void setGenre(String genre) {
+        this.genre = genre;
     }
 
     public boolean getAvailable() {
