@@ -10,25 +10,31 @@ class BookTest {
 
     @BeforeEach
     public void setup() {
+        //Given
         book = new Book("title", "authot", "genre");
     }
 
 
     @Test
     void BorrowUnavailableBook() {
+        //Given
         book.borrow();
 
+        //When
         IllegalStateException exception = Assertions.assertThrows(IllegalStateException.class,
                 () -> book.borrow());
 
+        //Then
         Assertions.assertEquals("Book is already borrowed", exception.getMessage());
     }
 
     @Test
     void returnNotBorrowedBook() {
+        //When
         IllegalStateException exception = Assertions.assertThrows(IllegalStateException.class,
                 () -> book.returnBook());
 
+        //Then
         Assertions.assertEquals("Book is not borrowed", exception.getMessage());
     }
 }
