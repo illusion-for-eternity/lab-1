@@ -16,7 +16,7 @@ public class Reader {
     public Reader(String firstName, String lastName, String password) {
         this.firstName = firstName;
         this.lastName = lastName;
-        this.password = password;
+        setPassword(password);
     }
 
     public Book getBook(String title) {
@@ -90,6 +90,9 @@ public class Reader {
     }
 
     public void setPassword(String password) {
+        if(password.length()<5){
+            throw new IllegalArgumentException("Password is too short");
+        }
         this.password = password;
     }
 }

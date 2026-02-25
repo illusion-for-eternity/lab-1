@@ -4,7 +4,6 @@ import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
-
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.when;
 
@@ -15,7 +14,7 @@ class ReaderTest {
     @BeforeEach
     public void setup() {
         //Given
-        reader = new Reader("Sherlok", "Holmes", "01");
+        reader = new Reader("Sherlok", "Holmes", "01010101");
     }
 
     @Test
@@ -64,5 +63,11 @@ class ReaderTest {
 
         //Then
         Assertions.assertEquals("Reader already has this book", exeption.getMessage());
+    }
+
+    @Test
+    public void SetShortReaderPassword(){
+        //Then
+        Assertions.assertThrows(RuntimeException.class, () -> reader.setPassword("12"));
     }
 }

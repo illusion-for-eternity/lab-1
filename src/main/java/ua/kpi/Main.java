@@ -23,9 +23,10 @@ public class Main {
             books.add(new Book("Doctor Serafikus", "Domogtovich", "Novel"));
             books.add(new Book("The Metamorphosis", "Franz Kafka", "Novella"));
             books.add(new Book("The Book of Five Rings", "Miyamoto Musashi", "Strategy"));
+            books.add(new Book("The Castle", "Franz Kafka", "Novel"));
 
             ArrayList<Reader> readers = new ArrayList<Reader>();
-            Reader reader1 = new Reader("Miku", "Hatsune", "39");
+            Reader reader1 = new Reader("Miku", "Hatsune", "393939");
             readers.add(reader1);
             readers.add(new Reader("Rin", "Kagamine", "012345"));
             readers.add(new Reader("Len", "Kagamine", "54321"));
