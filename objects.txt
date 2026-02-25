@@ -1,0 +1,10 @@
+Book{title='1984', author='George Orwell', genre='Dystopian', available=true}
+Book{title='Doctor Serafikus', author='Domogtovich', genre='Novel', available=true}
+Book{title='No longer human', author='Osamu Dazai', genre='Novel', available=true}
+Book{title='The 48 Laws of Power', author='Robert Greene', genre='Non-fiction', available=true}
+Book{title='The Book of Five Rings', author='Miyamoto Musashi', genre='Strategy', available=true}
+Book{title='The Castle', author='Franz Kafka', genre='Novel', available=true}
+Book{title='The Metamorphosis', author='Franz Kafka', genre='Novella', available=true}
+Reader{lastName='Hatsune', firstName='Miku', password='39'}
+Reader{lastName='Kagamine', firstName='Rin', password='012345'}
+Reader{lastName='Kagamine', firstName='Len', password='54321'}
