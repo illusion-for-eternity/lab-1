@@ -81,7 +81,6 @@ class LibraryTest {
     public void GetNonExistantBook() {
         //Given
         Book book = new Book("title", "authot", "genre");
-        book.borrow();
         library.setBook(book);
 
         //When
